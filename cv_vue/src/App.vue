@@ -1,104 +1,108 @@
 <template>
   <div id="app">
-    <div id="contacto">
-      <button> Contactame <i class="fas fa-angle-down"></i></button>
-    </div>
-    <div class="content">
-      <div class="content_title">
-        <h1>Cesar Javier Ortiz Montero</h1>
+    <header>
+      <div class="title">
+        <h1>Sobre mi</h1>
       </div>
-      <div class="content_body">
-        <div id="foto">
-          <img src="./assets/Imagenes/obrero.svg" alt="">
-        </div>  
-        <div id="botones">
-          <button class="boton" id="cv">
-            <img src="./assets/Imagenes/curriculum-vitae.svg" alt="Curriculum">
-          </button>
-          <button class="boton" id="portafolio">
-            <img src="./assets/Imagenes/portafolio.svg" alt="portafolio">
-          </button>
-      </div>
-      </div>
-    </div>
+    </header>
+    <section class="hero">
+      <img src="./assets/images/photo.svg" alt="">
+      <h2>Cesar Javier Ortiz Montero</h2>
+      <p>Desarrollador web Front-end</p>
+      <ul id="social-container">
+          <li v-for='(red,index) in social'
+              :key='index'
+              :title='red.name'
+              ><img :id='red.name' :src='red.image' class="social-item">
+          </li>
+      </ul>
+    </section>
+     <ul class="menu">
+       <div id="items">
+        <li v-for='(item,index) in menu'
+            :key='index'
+            :title='item.name'
+            clas>
+            <a href='#'
+              :ref='item.name'
+              :id='item.name'
+                ><img :src='item.image' class="menu-item">
+            </a>
+        </li>
+       </div>
+    </ul>
   </div>
 </template>
 
 <script>
-// import contacto from './components/Contacto.vue'
+import cv from "./assets/images/cv.svg"
+import aboutme from "./assets/images/about-me.svg"
+import contact from "./assets/images/contact-me.svg"
+import briefcase from "./assets/images/briefcase.svg"
+import git from "./assets/images/git.svg"
+import linkedin from "./assets/images/in.svg"
+import ig from "./assets/images/ig.svg"
 
 export default {
-  name: 'App',
-  data: function() {
-    return{
-
+  name: 'app',
+  data: function (){
+    return {
+      
+      menu: [{name:'cv',image:cv},
+             {name:'about-me',image:aboutme},
+             {name:'contact-me',image:contact},
+             {name:'briefcase',image:briefcase}],
+             
+      social: [{name:'git',image:git},
+             {name:'in',image:linkedin},
+             {name:'ig',image:ig}]
     }
   },
   components: {
-    // contacto
+  },
+  methods: {
   }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=B612:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 *{
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
-#root {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: #F1F6F9;
+body{
+  font-family: 'B612', sans-serif;
 }
-#contacto button{
-  width: 8.3125rem;
-  height: 2.5rem;
-  border-radius: 0.6rem;
-  background: #394867;
-  color: #F1F6F9;
-  font-size: 1rem;
-  padding: 0.625rem;
-  border: solid black 1px;
-  cursor: pointer;
-}
-#contacto i{
-  color: #9BA4B4;
-  padding-left: 0.3125rem;
-}
-.content_title h1{
-  width: 266px;
-  height: 26px;
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.content_body #foto img{
-  width: 12.5rem;
-  height: 12.5rem;
-}
-.content_body #botones{
-  width: 20rem;
-  height: 4.375rem;
-  left: 1.25rem;
-  top: 25.375rem;
-}
-.content_body .boton{
-  width: 5.625ren;
-  height: 4.375rem;
-  background: #394867;
-  border: none;
-  border-radius: 0.625rem;
-  border: solid black 1px;
-  cursor: pointer;
-}
-.content_body #botones .boton img{
-  width: 3.125rem;
-  padding: 0.625rem 1.25rem;
-}
+
 @media (max-width: 360px){
   
+  .menu{
+    width: 100%;
+    height: 3rem;
+    background: #3198DF;
+    position: fixed;
+  }
+  #items{
+    margin: 0px 45px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .menu li{
+    list-style: none;
+    background: #ffffff;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-content: center;
+  }
+  .menu li a {
+    text-decoration: none;
+    width:1.875rem;
+    height:1.875rem;
+  }
+  .menu-item{
+    width:1.875rem;
+    height:1.875rem;  
+  }
 }
 </style>
