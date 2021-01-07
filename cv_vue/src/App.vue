@@ -1,64 +1,46 @@
 <template>
   <div id="app">
-    <header>
-      <div class="title">
-        <h1>Sobre mi</h1>
-      </div>
-    </header>
-    <section class="hero">
-      <img src="./assets/images/photo.svg" alt="">
-      <h2>Cesar Javier Ortiz Montero</h2>
-      <p>Desarrollador web Front-end</p>
-      <ul id="social-container">
-          <li v-for='(red,index) in social'
+     <!-- <AboutMe/> -->
+     <ContactMe/>
+    <footer>
+      <ul class="menu">
+        <div class="items">
+          <li v-for='(item,index) in menu'
               :key='index'
-              :title='red.name'
-              ><img :id='red.name' :src='red.image' class="social-item">
-          </li>
-      </ul>
-    </section>
-     <ul class="menu">
-       <div id="items">
-        <li v-for='(item,index) in menu'
-            :key='index'
-            :title='item.name'
-            clas>
-            <a href='#'
-              :ref='item.name'
-              :id='item.name'
+              :title='item.name'
+              ><a href='#'
+                 :ref='item.name'
+                  :id='item.name'
                 ><img :src='item.image' class="menu-item">
-            </a>
-        </li>
-       </div>
-    </ul>
+              </a>
+          </li>
+        </div>
+      </ul>
+    </footer>
   </div>
 </template>
 
 <script>
-import cv from "./assets/images/cv.svg"
-import aboutme from "./assets/images/about-me.svg"
-import contact from "./assets/images/contact-me.svg"
-import briefcase from "./assets/images/briefcase.svg"
-import git from "./assets/images/git.svg"
-import linkedin from "./assets/images/in.svg"
-import ig from "./assets/images/ig.svg"
+import cv from "./assets/images/cv-white.png"
+import aboutme from "./assets/images/about-me-white.png"
+import contact from "./assets/images/contact-me-white.png"
+import briefcase from "./assets/images/briefcase-white.png"
+// import AboutMe from "./components/about-me.vue"
+import ContactMe from "./components/contact-me.vue"
 
 export default {
   name: 'app',
   data: function (){
     return {
-      
       menu: [{name:'cv',image:cv},
              {name:'about-me',image:aboutme},
              {name:'contact-me',image:contact},
              {name:'briefcase',image:briefcase}],
-             
-      social: [{name:'git',image:git},
-             {name:'in',image:linkedin},
-             {name:'ig',image:ig}]
     }
   },
   components: {
+    // AboutMe,
+    ContactMe
   },
   methods: {
   }
@@ -72,37 +54,47 @@ export default {
   padding: 0;
 }
 body{
+  width: 100vw;
+  height: 100vh;
   font-family: 'B612', sans-serif;
+  color: #1C1E1F;
+  background: #ffffff;
+  overflow-x: hidden;
 }
-
-@media (max-width: 360px){
-  
-  .menu{
+@media screen and (min-width:320px){
+    .title{
     width: 100%;
-    height: 3rem;
-    background: #3198DF;
-    position: fixed;
-  }
-  #items{
-    margin: 0px 45px;
+    height: 1.8125rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .title h1{
+    width: 6.375rem;
+    height: 1.8125rem;
+    font-size: 1.5rem;
+  }
+ footer{
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   height: 3rem;
+   z-index:2000;
+   background:#3198DF;
+  }
+  .menu{
+    list-style: none;
+  }
+  .items{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    margin: 0.3125rem 2.8125rem ;
     justify-content: space-between;
   }
-  .menu li{
-    list-style: none;
-    background: #ffffff;
-    width: 2.5rem;
-    height: 2.5rem;
-    align-content: center;
-  }
-  .menu li a {
-    text-decoration: none;
-    width:1.875rem;
-    height:1.875rem;
-  }
-  .menu-item{
-    width:1.875rem;
-    height:1.875rem;  
-  }
 }
+
+
 </style>
