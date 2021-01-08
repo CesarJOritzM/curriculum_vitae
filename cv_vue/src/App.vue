@@ -1,7 +1,8 @@
 <template>
   <div id="app">
      <!-- <AboutMe/> -->
-     <ContactMe/>
+     <!-- <ContactMe/> -->
+     <!-- <Briefcase/> -->
     <footer>
       <ul class="menu">
         <div class="items">
@@ -24,9 +25,10 @@
 import cv from "./assets/images/cv-white.png"
 import aboutme from "./assets/images/about-me-white.png"
 import contact from "./assets/images/contact-me-white.png"
-import briefcase from "./assets/images/briefcase-white.png"
+import work from "./assets/images/briefcase-white.png"
 // import AboutMe from "./components/about-me.vue"
-import ContactMe from "./components/contact-me.vue"
+// import ContactMe from "./components/contact-me.vue"
+// import Briefcase from "./components/briefcase.vue"
 
 export default {
   name: 'app',
@@ -35,12 +37,13 @@ export default {
       menu: [{name:'cv',image:cv},
              {name:'about-me',image:aboutme},
              {name:'contact-me',image:contact},
-             {name:'briefcase',image:briefcase}],
+             {name:'work',image:work}],
     }
   },
   components: {
     // AboutMe,
-    ContactMe
+    // ContactMe
+    // Briefcase
   },
   methods: {
   }

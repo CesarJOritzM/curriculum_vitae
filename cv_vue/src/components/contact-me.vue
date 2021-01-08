@@ -3,7 +3,7 @@
     <div class="title">
       <h1>Contactame</h1>
     </div>
-    <div class="cards" v-for='(item,index) in data'
+    <div class="contact-card" v-for='(item,index) in data'
       :key ='index'
       :id='item.cardname'
       ><div class="img">
@@ -44,9 +44,10 @@ export default {
     flex-direction: column;
     align-items: center;
   }
-  .cards{
+  .contact-card{
     display: flex;
     align-items: center;
+    justify-content: center;
     background: #98CBEF;
     width: 84%;
     height: 6.25rem;
@@ -60,8 +61,7 @@ export default {
   .img{
     width: 3.75rem;
     height: 3.75rem;
-    padding-right: 0.625rem;
-    margin-left: 7.49%;
+    padding-right: 1rem;
   }
   .img img{
     width: 3.75rem;

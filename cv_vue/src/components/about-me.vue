@@ -85,7 +85,7 @@ export default {
     background: #98CBEF;
     padding: 1.25rem 1.8125rem;
     margin-bottom: 5rem;
-    filter: drop-shadow(0px 4px 4px 0px #4C6577);
+     filter: drop-shadow( 0px 4px 4px #4C6577);
   }
   .about-me-text p{
     text-align: justify;
