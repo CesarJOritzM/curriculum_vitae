@@ -68,6 +68,7 @@ export default {
         height: 14.375rem;
         margin-bottom: 1.25rem;
         border-radius: 0.625rem;
+        filter: drop-shadow(-2px 4px 4px #4C6577);
     }
     .work-image{
         width: 100%;
