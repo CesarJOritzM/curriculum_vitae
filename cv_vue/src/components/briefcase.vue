@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (min-width:320px) {
+@media screen and (min-width:360px) {
     figure{
         display: none;
     }
@@ -53,7 +53,7 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 65.625rem ;
+        height: 67rem ;
     }
     .work a {
         text-decoration: none;
@@ -64,11 +64,13 @@ export default {
     }
     .work-card{
         background: #98CBEF;
-        width: 84%;
-        height: 14.375rem;
+        width: 20rem;
         margin-bottom: 1.25rem;
         border-radius: 0.625rem;
         filter: drop-shadow(-2px 4px 4px #4C6577);
+    }
+    .work-card a{
+        height: 100%;
     }
     .work-image{
         width: 100%;
@@ -79,10 +81,23 @@ export default {
         height: 100%;
     }
     .work-text{
-        margin-top: .7rem;
+        width: 100%;
+        text-align: center;
+        margin: 1rem;
     }
     .work-text h2{
         font-size: 1rem;
+    }
+}
+@media screen and (min-width: 720px){
+    .work{
+        height: 70rem;
+    }
+    .work-card{
+        margin-bottom:2.4rem ;
+    }
+    .work-text h2{
+        font-size: 1.375rem;
     }
 }
 </style>

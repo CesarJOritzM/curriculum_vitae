@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (min-width:320px){
+@media screen and (min-width:360px){
   .hero{
     width: 100%;
     margin-top: 2.5rem;

@@ -37,7 +37,11 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (min-width:320px){
+#contact-me{
+  width: 100%;
+  height: 100%;
+}
+@media screen and (min-width:360px){
 
   #contact-me{
     display: flex;
@@ -73,5 +77,7 @@ export default {
   #Ubicacion{
     margin-bottom: 5rem;
   }
+}
+@media screen and (min-width: 720px){
 }
 </style>
