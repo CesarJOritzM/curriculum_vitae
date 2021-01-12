@@ -45,48 +45,61 @@ export default {
 </script>
 
 <style scoped>
+figure{
+    display: none;
+}
+.work{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.work a {
+    text-decoration: none;
+    color: #1C1E1F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.work-card{
+    background: #98CBEF;
+    width: 80%;
+    margin-bottom: 1.25rem;
+    border-radius: 0.625rem;
+    filter: drop-shadow(-2px 4px 4px #4C6577);
+}
+.work-card a{
+    height: 100%;
+}
+.work-image{
+    width: 100%;
+    height: 70%;
+}
+.work-image img{
+    width: 100%;
+    height: 100%;
+}
+.work-text{
+    width: 100%;
+    text-align: center;
+    margin: 1rem;
+}
+.work-text h2{
+    font-size: 1rem;
+}
+#Vue{
+    margin-bottom: 4.5rem;
+}
 @media screen and (min-width:360px) {
-    figure{
-        display: none;
-    }
-    .work{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 67rem ;
-    }
-    .work a {
-        text-decoration: none;
-        color: #1C1E1F;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
     .work-card{
-        background: #98CBEF;
         width: 20rem;
-        margin-bottom: 1.25rem;
-        border-radius: 0.625rem;
-        filter: drop-shadow(-2px 4px 4px #4C6577);
-    }
-    .work-card a{
-        height: 100%;
     }
     .work-image{
-        width: 100%;
         height: 11.5rem;
-    }
-    .work-image img{
-        width: 100%;
-        height: 100%;
     }
     .work-text{
         width: 100%;
         text-align: center;
         margin: 1rem;
-    }
-    .work-text h2{
-        font-size: 1rem;
     }
 }
 @media screen and (min-width: 720px){
@@ -98,6 +111,29 @@ export default {
     }
     .work-text h2{
         font-size: 1.375rem;
+    }
+}
+@media screen and (min-width: 1024px){
+    figure{
+        display: block;
+        text-align: center;
+        margin-bottom: 3.75rem;
+    }
+    figure img{
+        width:12.5rem;
+        height: 12.5rem;
+    }
+    .work{
+        height: auto;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .work-card{
+        margin: 0rem 1.9rem 1.9rem;
+    }
+    #Vue{
+        margin-bottom: 2rem;
     }
 }
 </style>
