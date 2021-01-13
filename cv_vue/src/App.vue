@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div id="Cv" class="contenido"><Cv /></div>
-    <div id="Abountme" class="contenido open"><AboutMe /></div>
+    <div id="Cv" class="contenido open"><Cv /></div>
+    <div id="Abountme" class="contenido"><AboutMe /></div>
     <div id="Contacme" class="contenido"><ContactMe /></div>
-    <div id="Briefcase" class="contenido "><Briefcase /></div>
+    <div id="Briefcase" class="contenido"><Briefcase /></div>
 
     <footer>
       <ul class="menu">

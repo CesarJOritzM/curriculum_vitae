@@ -5,12 +5,12 @@
     </div>
     <div
       class="contact-card"
-      v-for="(item, index) in data"
-      :key="index"
-      :id="item.cardname"
+      v-for='(item, index) in data'
+      :key='index'
+      :id='item.cardname'
     >
       <div class="img">
-        <img :src="item.img" :alt="item.cardname" />
+        <img :src='item.img' :alt='item.cardname' />
       </div>
       <div class="text">
         <h2>{{ item.cardname }}</h2>
@@ -67,8 +67,8 @@ export default {
   padding-right: 1rem;
 }
 .img img {
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 100%;
+  height: 100%;
 }
 .text h2 {
   font-size: 1.25rem;
@@ -76,7 +76,28 @@ export default {
 #Ubicacion {
   margin-bottom: 5rem;
 }
+@media screen and (min-width: 360px) {
+  .contact-card {
+    width: 18.875rem;
+  }
+}
 @media screen and (min-width: 720px) {
-  
+  .contact-card {
+    width: 34.8125rem;
+    height: 10rem;
+    justify-content: initial;
+  }
+  .text h2 {
+    font-size: 1.375rem;
+  }
+  .text p {
+    font-size: 1.2rem;
+  }
+  .img {
+    width: 6.25rem;
+    height: 6.25rem;
+    padding-right: 2rem;
+    padding-left: 5rem;
+  }
 }
 </style>

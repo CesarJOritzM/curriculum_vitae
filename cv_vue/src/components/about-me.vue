@@ -24,12 +24,11 @@
         <p>
           Siempre me han gustado los retos, porque de esa forma puedes poner a
           prueba tu conocimiento, y eso es lo que he encontrado en el desarrollo
-          web, todos los días te encuentras ante diferentes circunstancias que
-          requieren lo mejor de ti para encontrar la mejor solución a los
-          problemas, logrando así afianzar y expandir los límites de mi
-          conocimiento, por ese motivó estoy a la búsqueda de experiencias
-          saquen lo mejor de mí, a su vez rodearme de personas experimentadas
-          para aprender de ellas y ser mejor cada día.
+          web, todos los días te encuentras ante diferentes retos que requieren
+          lo mejor de ti para encontrar la mejor solución, logrando así afianzar
+          y expandir los límites de mis conocimientos, por ese motivó estoy a la
+          búsqueda de experiencias saquen lo mejor de mí, a su vez rodearme de
+          personas experimentadas para aprender de ellas y ser mejor cada día.
         </p>
       </div>
     </section>
@@ -113,7 +112,7 @@ export default {
     margin-bottom: 3.74rem;
   }
   .name h2 {
-    font-size: 1.375rem
+    font-size: 1.375rem;
   }
   .name p {
     font-size: 1.2rem;
@@ -128,7 +127,7 @@ export default {
   }
   .about-me-text p {
     text-align: center;
-    font-size:1.2rem;
+    font-size: 1.2rem;
   }
 }
 </style>
