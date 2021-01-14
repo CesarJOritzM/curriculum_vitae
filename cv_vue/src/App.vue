@@ -52,18 +52,8 @@ export default {
     Cv,
   },
   methods: {
-    manejoClick: (evento) => {
-      console.log(evento.target.id);
-      this.cambiarSelected(evento.target.id);
-    },
-    cambiarSelected: (id) => {
-      for (var tab of this.$data.menu) {
-        if (tab.name === id) {
-          console.log(id);
-        }
-      }
-    },
-  },
+    
+  }
 };
 </script>
 
@@ -74,7 +64,7 @@ export default {
   padding: 0;
 }
 body {
-  font-family: "B612", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #1c1e1f;
   background: #ffffff;
   overflow-x: hidden;

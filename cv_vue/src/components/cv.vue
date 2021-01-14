@@ -3,77 +3,84 @@
     <div class="title">
       <h1>Cirruculum Vitae</h1>
     </div>
-    <div class="my-information">
-      <figure class="photo">
-        <img src="../assets/images/photo.svg" alt="foto de perfil" />
-      </figure>
-      <div class="information">
-        <div
-          class="contact"
-          v-for="(item, index) in contact"
-          :key="index"
-          :id="item.cardname"
-        >
-          <img :src="item.img" :alt="item.cardname" />
-          <div>
+    <div class="personal-info">
+      <div class="my-information">
+        <figure class="photo">
+          <img src="../assets/images/photo.svg" alt="foto de perfil" />
+        </figure>
+        <div class="information">
+          <div class="contact">
+            <div
+              class="contact-items"
+              v-for="(item, index) in contact"
+              :key="index"
+              :id="item.cardname"
+            >
+              <img :src="item.img" :alt="item.cardname" />
+              <div class="contact-text">
+                <p>
+                  <strong>{{ item.cardname }}</strong>
+                </p>
+                <p>{{ item.name }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="lang">
+            <h3>Lenguajes:</h3>
+            <p><strong>Español: </strong>Nativo</p>
+            <p><strong>Ingles: </strong>Basico</p>
+          </div>
+          <div class="skills">
+            <h3>habilidades de sofware</h3>
+            <div class="tools">
+              <div class="sofware" v-for="(item, index) in tools" :key="index">
+                <img
+                  :src="item.img"
+                  :alt="item.name"
+                  :id="item.name"
+                  :class="item.clase"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-studies">
+        <div class="profile">
+          <div class="pofile-title">
+            <h2>Perfil profesional</h2>
+          </div>
+          <div class="profile-content">
             <p>
-              <strong>{{ item.cardname }}</strong>
+              Todo maestro tiene un principio, y con disciplina y dedicación se
+              logra muchas cosas. Durante este tiempo de aprendizaje he estado
+              manejando herramientas Front-End como HTML, CSS y JavaScript,
+              además de frameworks como React, Vue y herramientas Bakc-end
+              Node.js con librerías de express además de Sails y el MVC (Modelo,
+              Vista, controlador). acostumbrado a cumplir con estrictos plazos
+              de entrega además apasionado por el trabajo en equipo aportando
+              soluciones creativas y prácticas.
             </p>
-            <p>{{ item.name }}</p>
           </div>
         </div>
-        <div class="lang">
-          <p><strong>Español:</strong>Nativo</p>
-          <p><strong>Ingles:</strong>Basico</p>
-        </div>
-        <div class="skills">
-          <h3>habilidades de sofware</h3>
+        <div class="studies">
+          <h2>Estudios</h2>
           <div
-            class="sofware"
-            v-for="(item, index) in tools"
+            class="certificate"
+            v-for="(item, index) in titles"
             :key="index"
-            :id="item.name"
+            :id="item.id"
           >
-            <img :src="item.img" :alt="item.name" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="my-studies">
-      <div class="profile">
-        <div class="pofile-title">
-          <h2>Perfil profesional</h2>
-        </div>
-        <div class="profile-content">
-          <p>
-            Todo maestro tiene un principio, y con disciplina y dedicación se
-            logra muchas cosas. Durante este tiempo de aprendizaje he estado
-            manejando herramientas Front-End como HTML, CSS y JavaScript, además
-            de frameworks como React, Vue y herramientas Bakc-end Node.js con
-            librerías de express además de Sails y el MVC (Modelo, Vista,
-            controlador). acostumbrado a cumplir con estrictos plazos de entrega
-            además apasionado por el trabajo en equipo aportando soluciones
-            creativas y prácticas.
-          </p>
-        </div>
-      </div>
-      <div class="studies">
-        <h2>Estidios</h2>
-        <div
-          class="certificate"
-          v-for="(item, index) in titles"
-          :key="index"
-          :id="item.id"
-        >
-          <div class="certificate-title">
-            <h3>{{ item.title }}</h3>
-            <a :href="item.link" target="_blank"
-              ><img src="../assets/images/certificate.png" alt="certificare"
-            /></a>
-          </div>
-          <div class="certificate-content">
-            <div class="certificate-descripcion">
-              <p>{{ item.descripcion }}</p>
+            <div class="certificate-title">
+              <h3>{{ item.title }}</h3>
+              <a :href="item.link" target="_blank"
+                ><img src="../assets/images/certificate.png" alt="certificare"
+              /></a>
+            </div>
+            <div class="certificate-content">
+              <div class="certificate-descripcion">
+                <p>{{ item.descripcion }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -87,10 +94,10 @@ import vue from "../assets/images/vue-js.svg";
 import react from "../assets/images/react.svg";
 import bootstrap from "../assets/images/bootstrap.svg";
 import sails from "../assets/images/sails.svg";
-import node from "../assets/images/nodejs.svg";
-import js from "../assets/images/javascript.svg";
-import css from "../assets/images/css.svg";
-import html from "../assets/images/html.svg";
+import node from "../assets/images/node.png";
+import js from "../assets/images/javascript.png";
+import css from "../assets/images/css3.png";
+import html from "../assets/images/html-5.png";
 import email from "../assets/images/email-white.png";
 import phone from "../assets/images/phone-withe.png";
 import marker from "../assets/images/marker-white.png";
@@ -103,11 +110,11 @@ export default {
         { name: "html", img: html },
         { name: "css", img: css },
         { name: "js", img: js },
+        { name: "react", img: react, clase: "back" },
+        { name: "vue", img: vue, clase: "back" },
+        { name: "sails", img: sails, clase: "back" },
         { name: "bootstrap", img: bootstrap },
-        { name: "react", img: react },
-        { name: "vue", img: vue },
         { name: "node", img: node },
-        { name: "sails", img: sails },
       ],
 
       titles: [
@@ -236,7 +243,7 @@ export default {
   border-top: solid 1px #1c1e1f;
 }
 #bases {
-  height: 13rem;
+  height: 11rem;
 }
 @media screen and (min-width: 720px) {
   .profile-content p {
@@ -254,10 +261,86 @@ export default {
   .certificate-title p {
     font-size: 1.1875rem;
   }
+  #bases{
+    height: initial;
+  }
 }
 @media screen and (min-width: 1024px) {
+  .personal-info {
+    display: flex;
+  }
+  .my-information {
+    margin-left: 3.2rem;
+    width: 18.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .my-studies{
+    width: 60%;
+  }
   .information {
+    top: 20.875rem;
     display: block;
+    width: 18.75rem;
+    position: absolute;
+    border-radius: 1.25rem;
+    background: #133c59;
+  }
+  .photo {
+    width: 21.875rem;
+    height: 21.875rem;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+  }
+  .contact {
+    margin-top: 13rem;
+    padding: 0rem 1.5625rem;
+    border-bottom: 3px solid white;
+  }
+  .contact-items {
+    display: flex;
+    color: white;
+    margin-bottom: 1.875rem;
+  }
+  .contact-text {
+    padding-left: 1rem;
+  }
+  .lang {
+    padding: 1.875rem 1.5625rem;
+    color: white;
+    border-bottom: 3px solid white;
+  }
+  .lang p {
+    margin: 0.5rem;
+  }
+  .skills {
+    padding: 1.875rem 1.5625rem 0rem;
+    text-align: center;
+    color: white;
+  }
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1.875rem;
+    justify-content: center;
+  }
+  .sofware {
+    padding: 0rem 1rem 1rem 0rem;
+  }
+  .back {
+    width: 50px;
+    height: 50px;
+  }
+  #bootstrap {
+    width: 70px;
+    height: 50px;
+    padding: 0rem;
   }
 }
 </style>
