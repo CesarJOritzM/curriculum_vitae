@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div id="Cv" class="contenido open"><Cv /></div>
-    <div id="Abountme" class="contenido"><AboutMe /></div>
-    <div id="Contacme" class="contenido"><ContactMe /></div>
-    <div id="Briefcase" class="contenido"><Briefcase /></div>
+    <div id="Abountme" class="contenido "><AboutMe /></div>
+    <div id="Contacme" class="contenido "><ContactMe /></div>
+    <div id="Briefcase" class="contenido "><Briefcase /></div>
 
-    <footer>
+    <footer id=" munu" class="extend">
       <ul class="menu">
         <div class="items">
-          <li v-for="(item, index) in menu" :key="index" :id="item.name">
-            <a href="#" :ref="item.name" :class="item.class"
+          <li v-for="(item, index) in menu" :key="index" :id="item.name" :class="item.class" >
+            <a href="#" :ref="item.name" 
               ><img
                 :src="item.image"
                 class="menu-item"
@@ -38,10 +38,10 @@ export default {
   data: () => {
     return {
       menu: [
-        { name: "cv", image: cv, class: "" },
-        { name: "about-me", image: aboutme, class: "" },
-        { name: "contact-me", image: contact, class: "" },
-        { name: "work", image: work, class: "" },
+        { name: "cv", image: cv, class: "selected" },
+        { name: "about-me", image: aboutme, class: "0" },
+        { name: "contact-me", image: contact, class: "0" },
+        { name: "work", image: work, class: "0" },
       ],
     };
   },
@@ -109,8 +109,9 @@ footer {
 }
 .selected {
   border: 1px solid red;
-  width: 2.5rem;
-  height: 2.5rem;
+}
+.extend{
+  width: 250px;
 }
 .items li a {
   display: inline-block;
@@ -119,7 +120,7 @@ footer {
 }
 @media screen and (min-width: 720px) {
   .contenido {
-    width: calc(100%-5.625rem);
+    width: calc(100% - 90px);
     margin-left: 5.625rem;
     height: 100%;
   }
@@ -136,14 +137,11 @@ footer {
   }
   .menu {
     flex-direction: column;
-    justify-content: center;
   }
   .items {
     flex-direction: column;
-    width: 100%;
+    width: 240px;
     height: 20.6875rem;
-    margin: 0px 0px;
-    align-items: center;
     justify-content: initial;
   }
   .items li {
@@ -152,7 +150,7 @@ footer {
   .menu-item {
     width: 2.5rem;
     height: 2.5rem;
-  }
+  } 
 }
 @media screen and (min-width: 1024px) {
   #contact-me {

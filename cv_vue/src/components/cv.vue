@@ -268,16 +268,14 @@ export default {
 @media screen and (min-width: 1024px) {
   .personal-info {
     display: flex;
+    justify-content: flex-end;
   }
   .my-information {
     margin-left: 3.2rem;
     width: 18.75rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-  .my-studies{
-    width: 60%;
+    align-items: center; 
   }
   .information {
     top: 20.875rem;
