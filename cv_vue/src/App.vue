@@ -1,21 +1,21 @@
 <template>
   <div id="app">
     <div id="Cv" class="contenido open"><Cv /></div>
-    <div id="Abountme" class="contenido "><AboutMe /></div>
-    <div id="Contacme" class="contenido "><ContactMe /></div>
-    <div id="Briefcase" class="contenido "><Briefcase /></div>
+    <div id="Abountme" class="contenido"><AboutMe /></div>
+    <div id="Contacme" class="contenido"><ContactMe /></div>
+    <div id="Briefcase" class="contenido"><Briefcase /></div>
 
     <footer id=" munu" class="extend">
       <ul class="menu">
         <div class="items">
-          <li v-for="(item, index) in menu" :key="index" :id="item.name" :class="item.class" >
-            <a href="#" :ref="item.name" 
-              ><img
-                :src="item.image"
-                class="menu-item"
-                @click="manejoClick($event)"
-              />
-            </a>
+          <li v-for="(item, index) in menu" :key="index" :class="item.class" >
+            <img
+              :src="item.image"
+              :id="item.name"
+              :ref="item.name"
+              class="menu-item"
+              @click="changeview($event)"
+            />
           </li>
         </div>
       </ul>
@@ -38,10 +38,10 @@ export default {
   data: () => {
     return {
       menu: [
-        { name: "cv", image: cv, class: "selected" },
-        { name: "about-me", image: aboutme, class: "0" },
-        { name: "contact-me", image: contact, class: "0" },
-        { name: "work", image: work, class: "0" },
+        { name: "cv", image: cv, class: "" },
+        { name: "about-me", image: aboutme, class: "" },
+        { name: "contact-me", image: contact, class: "" },
+        { name: "work", image: work, class: "" },
       ],
     };
   },
@@ -52,9 +52,16 @@ export default {
     Cv,
   },
   methods: {
-    
-  }
-};
+    changeview: function (evento){
+      console.log(evento);
+      // for (var tab of this.$data.menu){
+      //   if (tab.name == evento.target.id){
+      //     console.log(evento.target.id);
+      //   }
+      // }
+    }
+  }  
+}
 </script>
 
 <style>
@@ -98,25 +105,29 @@ footer {
 .menu {
   list-style: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  justify-content: center;
+}
+.menu-item {
+  margin-top: 0.3125rem;
+  height: 1.875rem;
+  width: 1.875rem;
 }
 .items {
   display: flex;
-  width: 17.2rem;
-  justify-content: space-between;
+}
+.items li {
+  width: 3rem;
+  height: 2.5rem;
+  text-align: center;
+  margin: 0px 1.25rem;
 }
 .selected {
-  border: 1px solid red;
+  background: white;
+  border-radius: 0px 0px 5px 5px;
 }
-.extend{
-  width: 250px;
-}
-.items li a {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
+.selected img {
+  filter: brightness(1%);
 }
 @media screen and (min-width: 720px) {
   .contenido {
@@ -150,7 +161,7 @@ footer {
   .menu-item {
     width: 2.5rem;
     height: 2.5rem;
-  } 
+  }
 }
 @media screen and (min-width: 1024px) {
   #contact-me {

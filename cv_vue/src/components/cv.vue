@@ -186,7 +186,7 @@ export default {
 }
 .pofile-title {
   align-self: end;
-  margin-left: 7.8%;
+  margin-left: 8%;
 }
 .information {
   display: none;
@@ -204,7 +204,7 @@ export default {
 }
 .profile-content {
   border-top: solid 1px #1c1e1f;
-  width: 92%;
+  max-width: 90%;
   background: #98cbef;
   border-radius: 0px 0px 0px 1.25rem;
 }
@@ -217,12 +217,12 @@ export default {
   text-align: -webkit-right;
 }
 .studies h2 {
-  margin-left: 7.8%;
+  margin-left: 8%;
   margin-bottom: 0.625rem;
   text-align: left;
 }
 .certificate {
-  width: 89.5%;
+  max-width: 86%;
   margin-bottom: 1.25rem;
 }
 .certificate-title {
