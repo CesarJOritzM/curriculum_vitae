@@ -2,7 +2,7 @@
   <div id="app">
     <header id="show" class="">
       <ul class="menu">
-        <i class="fas fa-bars" @click="manejarClick($event)"></i>
+        <i class="fas fa-bars" @click="showCompletemenu($event)"></i>
         <div class="items">
           <li
             v-for="(item, index) in icons"
@@ -11,8 +11,8 @@
             :id="item.name"
             @click="cambiarSelected($event)"
           >
-            <img :src="item.image" :ref="item.name" class="menu-item" />
-            <p>{{ item.text }}</p>
+            <img :src="item.image" :id="item.name" class="menu-item" />
+            <p :id="item.name">{{ item.text }}</p>
           </li>
         </div>
       </ul>
@@ -37,28 +37,31 @@ import Cv from "./components/cv.vue";
 
 var showComplete = false;
 const menu = [
-  { name: "cv", image: cv, text: " Curriculum" },
+  { name: "cv", image: cv, text: " Curriculum", class: "0" },
   {
     name: "about-me",
     image: aboutme,
     text: " Acerca de mi",
     class: "selected",
   },
-  { name: "contact-me", image: contact, text: " Contactame" },
-  { name: "work", image: work, text: " Portafolio" },
+  { name: "contact-me", image: contact, text: " Contactame", class: "0" },
+  { name: "briefcase", image: work, text: " Portafolio", class: "0" },
 ];
+var tabActive = document.getElementsByClassName("open");
+var menuItemActive = document.getElementsByClassName("selected");
+
 function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1);
 }
 export default {
   name: "app",
-  data: ()=>{
-    return{
-      icons: menu
-    }
+  data: () => {
+    return {
+      icons: menu,
+    };
   },
   methods: {
-    manejarClick: (event) => {
+    showCompletemenu: (event) => {
       if (event.target.className === "fas fa-bars") {
         if (!showComplete) {
           document.getElementById("show").className = "extend";
@@ -70,18 +73,22 @@ export default {
       }
     },
     cambiarSelected: (event) => {
-      var activa = document.getElementsByClassName("open")
       for (var item of menu) {
-        if (item.name === event.target.id){
-          if (capitalize(event.target.id)===activa[0].id)
-          console.log("son iguales");
-        }else{
-          document.getElementById(capitalize(event.target.id)).className = "contenido open"
-          document
-          //setear elemento open de activo y darselo al nuevo item id.
+        if (item.name === event.target.id) {
+          if (capitalize(event.target.id) === tabActive[0].id) {
+            console.log("son iguales");
+          } else {
+            document.getElementById(tabActive[0].id).className = "contenido";
+            document.getElementById(menuItemActive[0].id).className = "0";
+            document.getElementById(capitalize(event.target.id)).className =
+              "contenido open";
+            document.getElementById(event.target.id).className = "selected";
+            tabActive = document.getElementsByClassName("open");
+            menuItemActive = document.getElementsByClassName("selected");
+          }
         }
       }
-    }  
+    },
   },
   components: {
     AboutMe,

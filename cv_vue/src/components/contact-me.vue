@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-#contact-me {
+#contactame {
   display: flex;
   flex-direction: column;
   align-items: center;
