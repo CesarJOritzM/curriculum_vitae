@@ -1,5 +1,5 @@
 <template>
-  <div class="briefcase">
+  <div class="portafolio">
     <div class="title">
       <h1>Portafolio</h1>
     </div>

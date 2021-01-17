@@ -1,7 +1,7 @@
 <template>
-  <div id="cv">
+  <div id="curriculum">
     <div class="title">
-      <h1>Cirruculum Vitae</h1>
+      <h1>Curruculum Vitae</h1>
     </div>
     <div class="personal-info">
       <div class="my-information">
@@ -91,9 +91,9 @@
 
 <script>
 import vue from "../assets/images/vue-js.svg";
-import react from "../assets/images/react.svg";
+// import react from "../assets/images/react.svg";
 import bootstrap from "../assets/images/bootstrap.svg";
-import sails from "../assets/images/sails.svg";
+// import sails from "../assets/images/sails.svg";
 import node from "../assets/images/node.png";
 import js from "../assets/images/javascript.png";
 import css from "../assets/images/css3.png";
@@ -110,9 +110,9 @@ export default {
         { name: "html", img: html },
         { name: "css", img: css },
         { name: "js", img: js },
-        { name: "react", img: react, clase: "back" },
+        // { name: "react", img: react, clase: "back" },
         { name: "vue", img: vue, clase: "back" },
-        { name: "sails", img: sails, clase: "back" },
+        // { name: "sails", img: sails, clase: "back" },
         { name: "bootstrap", img: bootstrap },
         { name: "node", img: node },
       ],
@@ -217,7 +217,7 @@ export default {
   text-align: -webkit-right;
 }
 .studies h2 {
-  margin-left: 8%;
+  margin-left: 10%;
   margin-bottom: 0.625rem;
   text-align: left;
 }

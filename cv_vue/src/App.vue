@@ -1,25 +1,27 @@
 <template>
   <div id="app">
-    <div id="Cv" class="contenido open"><Cv /></div>
-    <div id="Abountme" class="contenido"><AboutMe /></div>
-    <div id="Contacme" class="contenido"><ContactMe /></div>
-    <div id="Briefcase" class="contenido"><Briefcase /></div>
-
-    <footer id=" munu" class="extend">
+    <header id="show" class="">
       <ul class="menu">
+        <i class="fas fa-bars" @click="manejarClick($event)"></i>
         <div class="items">
-          <li v-for="(item, index) in menu" :key="index" :class="item.class" >
-            <img
-              :src="item.image"
-              :id="item.name"
-              :ref="item.name"
-              class="menu-item"
-              @click="changeview($event)"
-            />
+          <li
+            v-for="(item, index) in icons"
+            :key="index"
+            :class="item.class"
+            :id="item.name"
+            @click="cambiarSelected($event)"
+          >
+            <img :src="item.image" :ref="item.name" class="menu-item" />
+            <p>{{ item.text }}</p>
           </li>
         </div>
       </ul>
-    </footer>
+    </header>
+
+    <div id="Cv" class="contenido"><Cv /></div>
+    <div id="About-me" class="contenido open"><AboutMe /></div>
+    <div id="Contact-me" class="contenido"><ContactMe /></div>
+    <div id="Briefcase" class="contenido"><Briefcase /></div>
   </div>
 </template>
 
@@ -33,17 +35,53 @@ import ContactMe from "./components/contact-me.vue";
 import Briefcase from "./components/briefcase.vue";
 import Cv from "./components/cv.vue";
 
+var showComplete = false;
+const menu = [
+  { name: "cv", image: cv, text: " Curriculum" },
+  {
+    name: "about-me",
+    image: aboutme,
+    text: " Acerca de mi",
+    class: "selected",
+  },
+  { name: "contact-me", image: contact, text: " Contactame" },
+  { name: "work", image: work, text: " Portafolio" },
+];
+function capitalize(word) {
+  return word[0].toUpperCase() + word.slice(1);
+}
 export default {
   name: "app",
-  data: () => {
-    return {
-      menu: [
-        { name: "cv", image: cv, class: "" },
-        { name: "about-me", image: aboutme, class: "" },
-        { name: "contact-me", image: contact, class: "" },
-        { name: "work", image: work, class: "" },
-      ],
-    };
+  data: ()=>{
+    return{
+      icons: menu
+    }
+  },
+  methods: {
+    manejarClick: (event) => {
+      if (event.target.className === "fas fa-bars") {
+        if (!showComplete) {
+          document.getElementById("show").className = "extend";
+          showComplete = !showComplete;
+        } else {
+          document.getElementById("show").className = "";
+          showComplete = !showComplete;
+        }
+      }
+    },
+    cambiarSelected: (event) => {
+      var activa = document.getElementsByClassName("open")
+      for (var item of menu) {
+        if (item.name === event.target.id){
+          if (capitalize(event.target.id)===activa[0].id)
+          console.log("son iguales");
+        }else{
+          document.getElementById(capitalize(event.target.id)).className = "contenido open"
+          document
+          //setear elemento open de activo y darselo al nuevo item id.
+        }
+      }
+    }  
   },
   components: {
     AboutMe,
@@ -51,17 +89,7 @@ export default {
     Briefcase,
     Cv,
   },
-  methods: {
-    changeview: function (evento){
-      console.log(evento);
-      // for (var tab of this.$data.menu){
-      //   if (tab.name == evento.target.id){
-      //     console.log(evento.target.id);
-      //   }
-      // }
-    }
-  }  
-}
+};
 </script>
 
 <style>
@@ -94,13 +122,17 @@ body {
 .title h1 {
   font-size: 1.5rem;
 }
-footer {
+header {
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 3rem;
   z-index: 2000;
   background: #3198df;
+}
+.fas {
+  display: none;
+  cursor: pointer;
 }
 .menu {
   list-style: none;
@@ -121,6 +153,10 @@ footer {
   height: 2.5rem;
   text-align: center;
   margin: 0px 1.25rem;
+  cursor: pointer;
+}
+.items li p {
+  display: none;
 }
 .selected {
   background: white;
@@ -141,10 +177,20 @@ footer {
   .title h1 {
     font-size: 1.7rem;
   }
-  footer {
+  header {
     left: 0;
     width: 5.625rem;
     height: 100%;
+    overflow: hidden;
+    display: flex;
+  }
+  .fas {
+    display: block;
+    font-size: 30px;
+    color: white;
+    margin: 30px 30px;
+    position: absolute;
+    top: 0;
   }
   .menu {
     flex-direction: column;
@@ -156,11 +202,34 @@ footer {
     justify-content: initial;
   }
   .items li {
-    margin: 0px 0px 50px 0px;
+    margin: 0px 0px 0px 5px;
+    padding: 20px;
+    width: 199px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  .items li p {
+    color: white;
+    font-size: 19px;
+    font-weight: 300;
+    display: block;
+    margin-left: 25px;
   }
   .menu-item {
     width: 2.5rem;
     height: 2.5rem;
+  }
+  .selected {
+    background: white;
+    border-radius: 10px;
+  }
+  .selected p {
+    filter: brightness(1%);
+  }
+  .extend {
+    width: 250px;
   }
 }
 @media screen and (min-width: 1024px) {
