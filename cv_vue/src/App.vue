@@ -86,6 +86,7 @@ export default {
             document.getElementById(event.target.id).className = "selected";
             tabActive = document.getElementsByClassName("open");
             menuItemActive = document.getElementsByClassName("selected");
+            showComplete = false
           }
         }
       }
