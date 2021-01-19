@@ -100,4 +100,27 @@ export default {
     padding-left: 5rem;
   }
 }
+@media screen and (min-width: 1024px){
+  #contactame{
+    display: block;
+    position: absolute;
+    right: 110px;
+    top: 120px;
+    width: 300px;
+    z-index: 2000;
+  }
+  .title{
+    display: none;
+  }
+  .contact-card{
+    width: 300px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+  .img {
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 20px;
+}
+}
 </style>

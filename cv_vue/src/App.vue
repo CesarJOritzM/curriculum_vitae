@@ -2,14 +2,14 @@
   <div id="app">
     <header id="show" class="">
       <ul class="menu">
-        <i class="fas fa-bars" @click="showCompletemenu($event)"></i>
+        <i class="fas fa-bars" @click="manejarClick($event)"></i>
         <div class="items">
           <li
-            v-for="(item, index) in icons"
+            v-for="(item, index) in menu"
             :key="index"
             :class="item.class"
             :id="item.name"
-            @click="cambiarSelected($event)"
+            @click="manejarClick($event)"
           >
             <img :src="item.image" :id="item.name" class="menu-item" />
             <p :id="item.name">{{ item.text }}</p>
@@ -17,7 +17,17 @@
         </div>
       </ul>
     </header>
-
+    <button
+      v-show="showContact"
+      class="boton"
+      id="drop"
+      @click="manejarClick($event)"
+    >
+      Contactame
+    </button>
+    <div v-show="showComplete">
+      <ContactMe />
+    </div>
     <div id="Cv" class="contenido"><Cv /></div>
     <div id="About-me" class="contenido open"><AboutMe /></div>
     <div id="Contact-me" class="contenido"><ContactMe /></div>
@@ -35,21 +45,6 @@ import ContactMe from "./components/contact-me.vue";
 import Briefcase from "./components/briefcase.vue";
 import Cv from "./components/cv.vue";
 
-var showComplete = false;
-const menu = [
-  { name: "cv", image: cv, text: " Curriculum", class: "0" },
-  {
-    name: "about-me",
-    image: aboutme,
-    text: " Acerca de mi",
-    class: "selected",
-  },
-  { name: "contact-me", image: contact, text: " Contactame", class: "0" },
-  { name: "briefcase", image: work, text: " Portafolio", class: "0" },
-];
-var tabActive = document.getElementsByClassName("open");
-var menuItemActive = document.getElementsByClassName("selected");
-
 function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1);
 }
@@ -58,37 +53,71 @@ export default {
   name: "app",
   data: () => {
     return {
-      icons: menu,
+      menu: [
+        { name: "cv", image: cv, text: " Curriculum", class: "0" },
+        {
+          name: "about-me",
+          image: aboutme,
+          text: " Acerca de mi",
+          class: "selected",
+        },
+        { name: "contact-me", image: contact, text: " Contactame", class: "0" },
+        { name: "briefcase", image: work, text: " Portafolio", class: "0" },
+      ],
+      showCompleteMenu: false,
+      showComplete: false,
+      showContact: true,
+      tabActive: null,
+      menuItemActive: null,
     };
   },
   methods: {
-    showCompletemenu: (event) => {
+    manejarClick(event) {
       if (event.target.className === "fas fa-bars") {
-        if (!showComplete) {
-          document.getElementById("show").className = "extend";
-          showComplete = !showComplete;
+        this.showCompletemenu();
+      } else if (event.target.id === "drop") {
+        this.toggleShowComplete();
+      } else {
+        if (event.target.id === "cv") {
+          this.showContact = !this.showContact;
+          this.cambiarSelected(event.target.id);
         } else {
-          document.getElementById("show").className = "";
-          showComplete = !showComplete;
+          this.showContact = true;
+          this.cambiarSelected(event.target.id);
         }
       }
     },
-    cambiarSelected: (event) => {
-      for (var item of menu) {
-        if (item.name === event.target.id) {
-          if (capitalize(event.target.id) === tabActive[0].id) {
+    showCompletemenu() {
+      if (!this.showCompleteMenu) {
+        document.getElementById("show").className = "extend";
+        this.showCompleteMenu = !this.showCompleteMenu;
+      } else {
+        document.getElementById("show").className = "";
+        this.showCompleteMenu = !this.showCompleteMenu;
+      }
+    },
+    cambiarSelected(id) {
+      this.tabActive = document.getElementsByClassName("open");
+      this.menuItemActive = document.getElementsByClassName("selected");
+      for (var item of this.menu) {
+        if (item.name === id) {
+          if (capitalize(id) === this.tabActive[0].id) {
             console.log("son iguales");
           } else {
-            document.getElementById(tabActive[0].id).className = "contenido";
-            document.getElementById(menuItemActive[0].id).className = "0";
-            document.getElementById(capitalize(event.target.id)).className =
+            document.getElementById(this.tabActive[0].id).className =
+              "contenido";
+            document.getElementById(this.menuItemActive[0].id).className = "0";
+            document.getElementById(capitalize(id)).className =
               "contenido open";
-            document.getElementById(event.target.id).className = "selected";
-            tabActive = document.getElementsByClassName("open");
-            menuItemActive = document.getElementsByClassName("selected");
+            document.getElementById(id).className = "selected";
+            this.tabActive = document.getElementsByClassName("open");
+            this.menuItemActive = document.getElementsByClassName("selected");
           }
         }
       }
+    },
+    toggleShowComplete() {
+      this.showComplete = !this.showComplete;
     },
   },
   components: {
@@ -168,7 +197,7 @@ header {
 }
 .selected {
   background: white;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0rem 0rem 0.3125rem 0.3125rem;
 }
 .selected img {
   filter: brightness(1%);
@@ -194,9 +223,9 @@ header {
   }
   .fas {
     display: block;
-    font-size: 30px;
+    font-size: 1.875rem;
     color: white;
-    margin: 30px 30px;
+    margin: 1.875rem 1.875rem;
     position: absolute;
     top: 0;
   }
@@ -205,25 +234,25 @@ header {
   }
   .items {
     flex-direction: column;
-    width: 240px;
+    width: 15rem;
     height: 20.6875rem;
     justify-content: initial;
   }
   .items li {
-    margin: 0px 0px 0px 5px;
-    padding: 20px;
-    width: 199px;
-    height: 80px;
+    margin: 0rem 0rem 0rem 0.3125rem;
+    padding: 1.25rem;
+    width: 12.4375rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     text-align: left;
   }
   .items li p {
     color: white;
-    font-size: 19px;
+    font-size: 1.1875rem;
     font-weight: 300;
     display: block;
-    margin-left: 25px;
+    margin-left: 1.5625rem;
   }
   .menu-item {
     width: 2.5rem;
@@ -231,7 +260,7 @@ header {
   }
   .selected {
     background: white;
-    border-radius: 10px;
+    border-radius: 0.625rem;
   }
   .selected p {
     filter: brightness(1%);
@@ -249,6 +278,19 @@ header {
   }
   .items {
     height: 15rem;
+  }
+  .boton {
+    position: absolute;
+    right: 0;
+    width: 11.25rem;
+    height: 3.125rem;
+    margin: 0rem 6.375rem 0rem 0rem;
+    font-size: 20px;
+    font-weight: bold;
+    background: #3198df;
+    color: #ffffff;
+    border-radius: 10px;
+    border: #1c1e1f;
   }
 }
 </style>
