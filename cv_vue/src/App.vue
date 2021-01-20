@@ -2,7 +2,7 @@
   <div id="app">
     <header id="show" class="">
       <ul class="menu">
-        <i class="fas fa-bars" @click="manejarClick($event)"></i>
+        <i class="fas fa-bars" @click="manejarClick($event)" ref="button"></i>
         <div class="items">
           <li
             v-for="(item, index) in menu"
@@ -20,12 +20,11 @@
     <button
       v-show="showContact"
       class="boton"
-      id="drop"
-      @click="manejarClick($event)"
+      @click.stop="showPopup"
     >
       Contactame
     </button>
-    <div v-show="showComplete">
+    <div v-show="showComplete" v-click-outside="hidePopup">
       <ContactMe />
     </div>
     <div id="Cv" class="contenido"><Cv /></div>
@@ -36,6 +35,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import cv from "./assets/images/cv-white.png";
 import aboutme from "./assets/images/about-me-white.png";
 import contact from "./assets/images/contact-me-white.png";
@@ -75,11 +75,9 @@ export default {
     manejarClick(event) {
       if (event.target.className === "fas fa-bars") {
         this.showCompletemenu();
-      } else if (event.target.id === "drop") {
-        this.toggleShowComplete();
       } else {
         if (event.target.id === "cv") {
-          this.showContact = !this.showContact;
+          this.showContact = false
           this.cambiarSelected(event.target.id);
         } else {
           this.showContact = true;
@@ -116,17 +114,48 @@ export default {
         }
       }
     },
-    toggleShowComplete() {
-      this.showComplete = !this.showComplete;
+     showPopup() {
+      this.showComplete = true;
     },
+    hidePopup() {
+      this.showComplete = false;
+    }
   },
   components: {
     AboutMe,
     ContactMe,
     Briefcase,
     Cv,
-  },
+  },  
 };
+Vue.directive("click-outside",{
+  bind: function (el, binding, vnode) {
+      el.eventSetDrag = function () {
+          el.setAttribute('data-dragging', 'yes');
+      }
+      el.eventClearDrag = function () {
+          el.removeAttribute('data-dragging');
+      }
+      el.eventOnClick = function (event) {
+          var dragging = el.getAttribute('data-dragging');
+          // Check that the click was outside the el and its children, and wasn't a drag
+          if (!(el == event.target || el.contains(event.target)) && !dragging) {
+              // call method provided in attribute value
+              vnode.context[binding.expression](event);
+          }
+      };
+      document.addEventListener('touchstart', el.eventClearDrag);
+      document.addEventListener('touchmove', el.eventSetDrag);
+      document.addEventListener('click', el.eventOnClick);
+      document.addEventListener('touchend', el.eventOnClick);
+  }, unbind: function (el) {
+      document.removeEventListener('touchstart', el.eventClearDrag);
+      document.removeEventListener('touchmove', el.eventSetDrag);
+      document.removeEventListener('click', el.eventOnClick);
+      document.removeEventListener('touchend', el.eventOnClick);
+      el.removeAttribute('data-dragging');
+  },
+});
 </script>
 
 <style>
