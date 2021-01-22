@@ -231,6 +231,9 @@ header {
 .selected img {
   filter: brightness(1%);
 }
+.boton{
+  display:none;
+}
 @media screen and (min-width: 720px) {
   .contenido {
     width: calc(100% - 90px);
